@@ -3,36 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { asMatrix } from "./asMatrix";
 import { Board } from "./Board";
 import { handleKey } from "./handleKey";
-import { BumpedIntoMyselfError, Direction, Snake } from "./Snake";
-
-const BOARD_WIDTH = 20;
-const BOARD_HEIGHT = 10;
-
-function createSnake(): Snake {
-  return new Snake([
-    [0, 0],
-    [0, 1],
-    [0, 2],
-    [1, 2],
-    [2, 2],
-    [2, 3],
-    [2, 4],
-    [2, 5],
-    [2, 6],
-    [3, 6],
-  ]);
-}
-
-function reachedBorder(snake: Snake): boolean {
-  const head = snake.getHead();
-
-  return (
-    head[0] < 0 ||
-    head[0] >= BOARD_HEIGHT ||
-    head[1] < 0 ||
-    head[1] >= BOARD_WIDTH
-  );
-}
+import { BumpedIntoMyselfError, Direction } from "./Snake";
+import { BOARD_HEIGHT, BOARD_WIDTH, createSnake, reachedBorder } from "./utils";
 
 function App() {
   const snakeRef = useRef(createSnake());
@@ -55,27 +27,29 @@ function App() {
   }
 
   function registerInterval() {
-    const interval = setInterval(() => {
-      try {
-        snakeRef.current.move();
-        if (reachedBorder(snakeRef.current)) {
-          snakeRef.current.setDirection(Direction.Still);
-          setGameOver(true);
-        }
-      } catch (e) {
-        if (e instanceof BumpedIntoMyselfError) {
-          snakeRef.current.setDirection(Direction.Still);
-          setGameOver(true);
-        }
-      }
-      setStateMatrix(updateStateMatrix);
-    }, 100);
+    const interval = setInterval(updateGame, 100);
 
     return () => clearInterval(interval);
   }
 
   function updateStateMatrix() {
     return asMatrix(snakeRef.current, BOARD_HEIGHT, BOARD_WIDTH);
+  }
+
+  function updateGame() {
+    try {
+      snakeRef.current.move();
+      if (reachedBorder(snakeRef.current)) {
+        snakeRef.current.setDirection(Direction.Still);
+        setGameOver(true);
+      }
+    } catch (e) {
+      if (e instanceof BumpedIntoMyselfError) {
+        snakeRef.current.setDirection(Direction.Still);
+        setGameOver(true);
+      }
+    }
+    setStateMatrix(updateStateMatrix);
   }
 
   useEffect(registerKeyboardListener, []);
