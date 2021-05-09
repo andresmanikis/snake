@@ -10,12 +10,12 @@ it("converts a location into a matrix", () => {
     [2, 2],
   ]);
 
-  expect(asMatrix(snake, 3, 3)).toEqual(
+  expect(asMatrix(snake, 3, 4)).toEqual(
     // prettier-ignore
     [
-      [true,  true,  true],
-      [false, false, true],
-      [false, false, true],
+      [true,  true,  true, false],
+      [false, false, true, false],
+      [false, false, true, false],
     ]
   );
 });

@@ -4,8 +4,8 @@ export type StateMatrix = Array<Array<boolean>>;
 
 export function asMatrix(
   snake: Snake,
-  width: number,
-  height: number
+  height: number,
+  width: number
 ): StateMatrix {
   const snakeLocation = snake.getLocation();
 
