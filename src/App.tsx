@@ -27,29 +27,28 @@ function App() {
   }
 
   function registerInterval() {
-    const interval = setInterval(updateGame, 100);
+    function updateGame() {
+      try {
+        snakeRef.current.move();
+        if (reachedBorder(snakeRef.current)) {
+          snakeRef.current.setDirection(Direction.Still);
+          setGameOver(true);
+        }
+      } catch (e) {
+        if (e instanceof BumpedIntoMyselfError) {
+          snakeRef.current.setDirection(Direction.Still);
+          setGameOver(true);
+        }
+      }
+      setStateMatrix(updateStateMatrix);
+    }
 
+    const interval = setInterval(updateGame, 100);
     return () => clearInterval(interval);
   }
 
   function updateStateMatrix() {
     return asMatrix(snakeRef.current, BOARD_HEIGHT, BOARD_WIDTH);
-  }
-
-  function updateGame() {
-    try {
-      snakeRef.current.move();
-      if (reachedBorder(snakeRef.current)) {
-        snakeRef.current.setDirection(Direction.Still);
-        setGameOver(true);
-      }
-    } catch (e) {
-      if (e instanceof BumpedIntoMyselfError) {
-        snakeRef.current.setDirection(Direction.Still);
-        setGameOver(true);
-      }
-    }
-    setStateMatrix(updateStateMatrix);
   }
 
   useEffect(registerKeyboardListener, []);
