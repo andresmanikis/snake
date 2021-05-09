@@ -6,6 +6,19 @@ export enum Direction {
   Left,
   Right,
 }
+
+function calculateNextHead(
+  currentHead: Coordinate,
+  direction: Direction
+): Coordinate {
+  switch (direction) {
+    case Direction.Right:
+      return [currentHead[0], currentHead[1] + 1];
+    case Direction.Down:
+      return [currentHead[0] + 1, currentHead[1]];
+  }
+}
+
 export class Snake {
   constructor(private location: Coordinate[]) {}
 
@@ -19,7 +32,7 @@ export class Snake {
 
   move(direction: Direction): void {
     const currentHead = this.getHead();
-    const nextHead: Coordinate = [currentHead[0], currentHead[1] + 1];
+    const nextHead: Coordinate = calculateNextHead(currentHead, direction);
 
     this.location = [...this.location.slice(1), nextHead];
   }

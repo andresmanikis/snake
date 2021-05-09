@@ -33,3 +33,19 @@ it("moves right", () => {
     [0, 3],
   ]);
 });
+
+it("moves down", () => {
+  const snake = new Snake([
+    [0, 0],
+    [0, 1],
+    [0, 2],
+  ]);
+
+  snake.move(Direction.Down);
+
+  expect(snake.getLocation()).toEqual([
+    [0, 1],
+    [0, 2],
+    [1, 2],
+  ]);
+});
