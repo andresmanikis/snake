@@ -1,4 +1,9 @@
-import { AbruptDirectionChangeError, Direction, Snake } from "../Snake";
+import {
+  AbruptDirectionChangeError,
+  BumpedIntoMyselfError,
+  Direction,
+  Snake,
+} from "../Snake";
 
 // prettier-ignore
 test("returns its location", () => {
@@ -82,4 +87,21 @@ describe("prevents abrupt changes of direction", () => {
     );
   });
 });
-it.todo("prevents moving into forbidden directions");
+
+it("throws BumpedIntoMyselfError when bumping into itself", () => {
+  /**
+   * *****     ****     *#*
+   *     *       ^*      **
+   *    <*       **      **
+   */
+
+  // prettier-ignore
+  const snake = new Snake([
+    [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [1, 4], [2, 4], [2, 3]
+  ]);
+
+  snake.setDirection(Direction.Up);
+
+  expect(() => snake.move()).not.toThrow();
+  expect(() => snake.move()).toThrow(BumpedIntoMyselfError);
+});

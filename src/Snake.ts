@@ -1,6 +1,7 @@
 type Coordinate = [number, number];
 
 export class AbruptDirectionChangeError extends Error {}
+export class BumpedIntoMyselfError extends Error {}
 
 export enum Direction {
   Up,
@@ -28,6 +29,17 @@ function calculateNextHead(
   }
 }
 
+function hasCoordinate(
+  coordinates: Coordinate[],
+  coordinate: Coordinate
+): boolean {
+  return (
+    coordinates.find(
+      (c) => c[0] === coordinate[0] && c[1] === coordinate[1]
+    ) !== undefined
+  );
+}
+
 export class Snake {
   private currentDirection: Direction = Direction.Still;
 
@@ -52,7 +64,15 @@ export class Snake {
       this.currentDirection
     );
 
+    if (this.isAlreadyIn(nextHead)) {
+      throw new BumpedIntoMyselfError();
+    }
+
     this.location = [...this.location.slice(1), nextHead];
+  }
+
+  private isAlreadyIn(coordinate: Coordinate) {
+    return hasCoordinate(this.location, coordinate);
   }
 
   setDirection(direction: Direction): void {
