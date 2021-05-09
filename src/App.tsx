@@ -75,7 +75,7 @@ function App() {
   }
 
   function updateStateMatrix() {
-    return asMatrix(snakeRef.current, 10, 20);
+    return asMatrix(snakeRef.current, BOARD_HEIGHT, BOARD_WIDTH);
   }
 
   useEffect(registerKeyboardListener, []);
