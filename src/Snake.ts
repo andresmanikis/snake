@@ -49,7 +49,7 @@ export class Snake {
     return this.location;
   }
 
-  private getHead() {
+  getHead(): Coordinate {
     return this.location[this.location.length - 1];
   }
 

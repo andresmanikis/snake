@@ -5,6 +5,9 @@ import { Board } from "./Board";
 import { handleKey } from "./handleKey";
 import { BumpedIntoMyselfError, Direction, Snake } from "./Snake";
 
+const BOARD_WIDTH = 20;
+const BOARD_HEIGHT = 10;
+
 function createSnake(): Snake {
   return new Snake([
     [0, 0],
@@ -18,6 +21,17 @@ function createSnake(): Snake {
     [2, 6],
     [3, 6],
   ]);
+}
+
+function reachedBorder(snake: Snake): boolean {
+  const head = snake.getHead();
+
+  return (
+    head[0] < 0 ||
+    head[0] >= BOARD_HEIGHT ||
+    head[1] < 0 ||
+    head[1] >= BOARD_WIDTH
+  );
 }
 
 function App() {
@@ -44,6 +58,10 @@ function App() {
     const interval = setInterval(() => {
       try {
         snakeRef.current.move();
+        if (reachedBorder(snakeRef.current)) {
+          snakeRef.current.setDirection(Direction.Still);
+          setGameOver(true);
+        }
       } catch (e) {
         if (e instanceof BumpedIntoMyselfError) {
           snakeRef.current.setDirection(Direction.Still);

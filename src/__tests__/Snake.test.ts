@@ -117,3 +117,12 @@ it("throws BumpedIntoMyselfError when bumping into itself", () => {
   expect(() => snake.move()).not.toThrow();
   expect(() => snake.move()).toThrow(BumpedIntoMyselfError);
 });
+
+it("can return its head position", () => {
+  // prettier-ignore
+  const snake = new Snake([
+    [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [1, 4], [2, 4], [2, 3]
+  ]);
+
+  expect(snake.getHead()).toEqual([2, 3]);
+});
