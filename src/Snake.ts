@@ -16,6 +16,10 @@ function calculateNextHead(
       return [currentHead[0], currentHead[1] + 1];
     case Direction.Down:
       return [currentHead[0] + 1, currentHead[1]];
+    case Direction.Left:
+      return [currentHead[0], currentHead[1] - 1];
+    case Direction.Up:
+      return [currentHead[0] - 1, currentHead[1]];
   }
 }
 

@@ -19,33 +19,43 @@ it("returns its location", () => {
 });
 
 it("moves right", () => {
-  const snake = new Snake([
-    [0, 0],
-    [0, 1],
-    [0, 2],
-  ]);
+  // prettier-ignore
+  const snake = new Snake([[0, 0], [0, 1], [0, 2]]);
 
   snake.move(Direction.Right);
 
-  expect(snake.getLocation()).toEqual([
-    [0, 1],
-    [0, 2],
-    [0, 3],
-  ]);
+  // prettier-ignore
+  expect(snake.getLocation()).toEqual([[0, 1], [0, 2], [0, 3]]);
 });
 
 it("moves down", () => {
-  const snake = new Snake([
-    [0, 0],
-    [0, 1],
-    [0, 2],
-  ]);
+  // prettier-ignore
+  const snake = new Snake([[0, 0], [0, 1], [0, 2]]);
 
   snake.move(Direction.Down);
 
-  expect(snake.getLocation()).toEqual([
-    [0, 1],
-    [0, 2],
-    [1, 2],
-  ]);
+  // prettier-ignore
+  expect(snake.getLocation()).toEqual([[0, 1], [0, 2], [1, 2]]);
 });
+
+it("moves left", () => {
+  // prettier-ignore
+  const snake = new Snake([[0, 0], [0, 1], [1, 1]]);
+
+  snake.move(Direction.Left);
+
+  // prettier-ignore
+  expect(snake.getLocation()).toEqual([[0, 1], [1, 1], [1, 0]]);
+});
+
+it("moves up", () => {
+  // prettier-ignore
+  const snake = new Snake([[0, 0], [0, 1], [0, 2]]);
+
+  snake.move(Direction.Up);
+
+  // prettier-ignore
+  expect(snake.getLocation()).toEqual([[0, 1], [0, 2], [-1, 2]]);
+});
+
+it.todo("prevents moving into forbidden directions");
