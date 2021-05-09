@@ -65,11 +65,14 @@ describe("prevents abrupt changes of direction", () => {
 
   test("left to right", () => {
     // prettier-ignore
-    const snake = new Snake([[0, 0], [0, 1], [0, 2]]);
+    const snake = new Snake([[0, 0], [0, 1], [1, 1]]);
     snake.setDirection(Direction.Left);
     expect(() => snake.setDirection(Direction.Right)).toThrow(
       AbruptDirectionChangeError
     );
+    snake.move();
+    // prettier-ignore
+    expect(snake.getLocation()).toEqual([[0, 1], [1, 1], [1, 0]]);
   });
 
   test("up to down", () => {
@@ -79,6 +82,9 @@ describe("prevents abrupt changes of direction", () => {
     expect(() => snake.setDirection(Direction.Down)).toThrow(
       AbruptDirectionChangeError
     );
+    snake.move();
+    // prettier-ignore
+    expect(snake.getLocation()).toEqual([[0, 1], [0, 2], [-1, 2]]);
   });
 
   test("down to up", () => {
@@ -88,6 +94,9 @@ describe("prevents abrupt changes of direction", () => {
     expect(() => snake.setDirection(Direction.Up)).toThrow(
       AbruptDirectionChangeError
     );
+    snake.move();
+    // prettier-ignore
+    expect(snake.getLocation()).toEqual([[0, 1], [0, 2], [1, 2]]);
   });
 });
 
