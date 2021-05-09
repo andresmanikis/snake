@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders empty 1`] = `
+exports[`renders a state matrix 1`] = `
 <div>
   <table
     class="table"
@@ -24,17 +24,21 @@ exports[`renders empty 1`] = `
         <td
           class="td"
         />
+      </tr>
+      <tr
+        class="tr"
+      >
         <td
           class="td"
+        />
+        <td
+          class="td active"
         />
         <td
           class="td"
         />
         <td
-          class="td"
-        />
-        <td
-          class="td"
+          class="td active"
         />
         <td
           class="td"
@@ -50,22 +54,7 @@ exports[`renders empty 1`] = `
           class="td"
         />
         <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
+          class="td active"
         />
         <td
           class="td"
@@ -81,28 +70,13 @@ exports[`renders empty 1`] = `
           class="td"
         />
         <td
-          class="td"
+          class="td active"
         />
         <td
           class="td"
         />
         <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
+          class="td active"
         />
         <td
           class="td"
@@ -111,225 +85,6 @@ exports[`renders empty 1`] = `
       <tr
         class="tr"
       >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-      </tr>
-      <tr
-        class="tr"
-      >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-      </tr>
-      <tr
-        class="tr"
-      >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-      </tr>
-      <tr
-        class="tr"
-      >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-      </tr>
-      <tr
-        class="tr"
-      >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-      </tr>
-      <tr
-        class="tr"
-      >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-      </tr>
-      <tr
-        class="tr"
-      >
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
-        <td
-          class="td"
-        />
         <td
           class="td"
         />

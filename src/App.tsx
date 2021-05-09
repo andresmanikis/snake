@@ -1,7 +1,16 @@
 import { Board } from "./Board";
 
 function App() {
-  return <Board width={30} height={20} />;
+  // prettier-ignore
+  const stateMatrix = [
+    [false, false, false, false, false],
+    [false, true,  false, true,  false],
+    [false, false, true,  false, false],
+    [false, true,  false, true,  false],
+    [false, false, false, false, false],
+  ];
+
+  return <Board stateMatrix={stateMatrix} />;
 }
 
 export default App;

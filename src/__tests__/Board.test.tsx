@@ -2,7 +2,16 @@ import { render } from "@testing-library/react";
 
 import { Board } from "../Board";
 
-it("renders empty", () => {
-  const { container } = render(<Board width={10} height={10} />);
+it("renders a state matrix", () => {
+  // prettier-ignore
+  const stateMatrix = [
+    [false, false, false, false, false],
+    [false, true,  false, true,  false],
+    [false, false, true,  false, false],
+    [false, true,  false, true,  false],
+    [false, false, false, false, false],
+  ];
+
+  const { container } = render(<Board stateMatrix={stateMatrix} />);
   expect(container).toMatchSnapshot();
 });

@@ -1,40 +1,24 @@
 import styles from "./Board.module.css";
 
 interface Props {
-  width: number;
-  height: number;
+  stateMatrix: Array<Array<boolean>>;
 }
 
-function generateBoardMatrix(
-  width: number,
-  height: number
-): Array<Array<boolean>> {
-  const boardMatrix = [];
-
-  for (let rowIndex = 0; rowIndex < height; rowIndex++) {
-    const row = [];
-
-    for (let colIndex = 0; colIndex < width; colIndex++) {
-      row.push(false);
-    }
-
-    boardMatrix.push(row);
-  }
-
-  return boardMatrix;
-}
-
-export function Board({ width, height }: Props) {
-  const matrix = generateBoardMatrix(width, height);
-
+export function Board({ stateMatrix }: Props) {
   return (
     <table className={styles.table}>
       <tbody>
-        {matrix.map((row, index) => (
+        {stateMatrix.map((row, index) => (
           <tr key={index} className={styles.tr}>
-            {row.map((col, index) => (
-              <td key={index} className={styles.td}></td>
-            ))}
+            {row.map((col, index) => {
+              let classes = styles.td;
+
+              if (col === true) {
+                classes += " " + styles.active;
+              }
+
+              return <td key={index} className={classes}></td>;
+            })}
           </tr>
         ))}
       </tbody>

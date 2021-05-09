@@ -4,6 +4,10 @@
   border: 1px solid gray;
 }
 
+.td.active {
+  background-color: gray;
+}
+
 .table {
   border-collapse: collapse;
 }
