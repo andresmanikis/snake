@@ -1,16 +1,22 @@
+import { asMatrix } from "./asMatrix";
 import { Board } from "./Board";
+import { Snake } from "./Snake";
 
 function App() {
-  // prettier-ignore
-  const stateMatrix = [
-    [false, false, false, false, false],
-    [false, true,  false, true,  false],
-    [false, false, true,  false, false],
-    [false, true,  false, true,  false],
-    [false, false, false, false, false],
-  ];
+  const snake = new Snake([
+    [0, 0],
+    [0, 1],
+    [0, 2],
+    [1, 2],
+    [2, 2],
+    [2, 3],
+    [2, 4],
+    [2, 5],
+    [2, 6],
+    [3, 6],
+  ]);
 
-  return <Board stateMatrix={stateMatrix} />;
+  return <Board stateMatrix={asMatrix(snake, 10, 10)} />;
 }
 
 export default App;
