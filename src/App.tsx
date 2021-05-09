@@ -3,12 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { asMatrix } from "./asMatrix";
 import { Board } from "./Board";
 import { handleKey } from "./handleKey";
-import {
-  AbruptDirectionChangeError,
-  BumpedIntoMyselfError,
-  Direction,
-  Snake,
-} from "./Snake";
+import { BumpedIntoMyselfError, Direction, Snake } from "./Snake";
 
 function App() {
   const snakeRef = useRef(
@@ -54,10 +49,6 @@ function App() {
         if (e instanceof BumpedIntoMyselfError) {
           snakeRef.current.setDirection(Direction.Still);
           setGameOver(true);
-        }
-
-        if (e instanceof AbruptDirectionChangeError) {
-          // Nothing happens, just keep going and ignore the direction change.
         }
       }
       setStateMatrix(updateStateMatrix);

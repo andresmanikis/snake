@@ -58,6 +58,9 @@ describe("prevents abrupt changes of direction", () => {
     expect(() => snake.setDirection(Direction.Left)).toThrow(
       AbruptDirectionChangeError
     );
+    snake.move();
+    // prettier-ignore
+    expect(snake.getLocation()).toEqual([[0, 1], [0, 2], [0, 3]]);
   });
 
   test("left to right", () => {
