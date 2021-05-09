@@ -1,5 +1,7 @@
 type Coordinate = [number, number];
 
+export class AbruptDirectionChangeError extends Error {}
+
 export enum Direction {
   Up,
   Down,
@@ -54,6 +56,29 @@ export class Snake {
   }
 
   setDirection(direction: Direction): void {
+    switch (this.currentDirection) {
+      case Direction.Right:
+        if (direction === Direction.Left) {
+          throw new AbruptDirectionChangeError();
+        }
+        break;
+      case Direction.Left:
+        if (direction === Direction.Right) {
+          throw new AbruptDirectionChangeError();
+        }
+        break;
+      case Direction.Up:
+        if (direction === Direction.Down) {
+          throw new AbruptDirectionChangeError();
+        }
+        break;
+      case Direction.Down:
+        if (direction === Direction.Up) {
+          throw new AbruptDirectionChangeError();
+        }
+        break;
+    }
+
     this.currentDirection = direction;
   }
 }
